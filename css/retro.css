@@ -1,0 +1,84 @@
+/* ===== COLORES (sacados de tu CV): cambia aquí y se actualiza toda la web ===== */
+:root{
+  --cafe:#4b3a2c;     /* marrón del lateral del CV */
+  --cobre:#a0663a;    /* títulos del CV */
+  --arena:#d8b88c;    /* línea clara del CV */
+  --crudo:#f5f0e8;    /* fondo claro */
+  --tinta:#241d17;    /* texto */
+}
+*{box-sizing:border-box}
+html{background:var(--crudo)}
+body{
+  margin:0;color:var(--tinta);
+  font:16px/1.65 "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--cobre);outline-offset:3px}
+.pagina{max-width:1120px;margin:0 auto;padding:24px 18px 48px}
+
+/* ===== Casillas: celdas separadas por una línea fina ===== */
+.tabla{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;background:var(--cafe);border:1px solid var(--cafe);margin-bottom:28px}
+.celda{background:var(--crudo);padding:26px}
+.c8{grid-column:span 8}.c4{grid-column:span 4}.c12{grid-column:span 12}
+.cafe{background:var(--cafe);color:var(--crudo)}
+.arena{background:var(--arena)}
+
+h1{
+  margin:0;font:bold clamp(2rem,5.2vw,3.6rem)/1.05 Georgia,"Times New Roman",serif;
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.sub{margin:14px 0 0;font:italic 1.15rem Georgia,serif;color:var(--arena)}
+h2{margin:0;font:600 .8rem "Helvetica Neue",Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+h3{margin:0 0 4px;font:bold 1rem/1.35 Georgia,serif}
+p{margin:0 0 .8em}
+.rotulo{font:600 .75rem Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre);margin:0 0 8px}
+.arena .rotulo{color:var(--cafe)}
+
+.enlaces{list-style:none;margin:0;padding:0}
+.enlaces li{border-top:1px solid var(--cafe)}
+.enlaces li:first-child{border-top:0}
+.enlaces a{display:block;padding:10px 0;text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.enlaces a:hover{color:var(--cobre);padding-left:6px;transition:padding .2s}
+
+.barra{background:var(--cafe);color:var(--crudo);padding:10px 26px}
+
+/* ===== Trabajos ===== */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cafe);border:1px solid var(--cafe);margin-bottom:28px}
+.obra{background:var(--crudo);display:flex;flex-direction:column}
+.obra a.foto{display:block;line-height:0;overflow:hidden;background:var(--cafe)}
+.obra img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:var(--pos,center 35%);transition:transform .5s,opacity .3s}
+.obra a.foto:hover img{transform:scale(1.03);opacity:.9}
+.obra .texto{padding:16px 20px 20px;border-top:1px solid var(--cafe);flex:1}
+.obra .texto p{margin:0;font-size:.9rem;color:#5a4a3c}
+.pronto{display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;background:var(--arena);font:italic 1.1rem Georgia,serif;min-height:220px}
+
+/* ===== Experiencia (tabla real) ===== */
+table{width:100%;border-collapse:collapse;background:var(--crudo)}
+th,td{padding:18px 26px;text-align:left;vertical-align:top;border-top:1px solid var(--cafe);font-weight:normal}
+tr:first-child th,tr:first-child td{border-top:0}
+th{width:150px;font:600 .85rem Arial,sans-serif;color:var(--cobre);letter-spacing:.04em}
+td.lugar{width:34%}
+td.lugar small{display:block;color:#5a4a3c;font-size:.88rem;margin-top:2px}
+td p{font-size:.92rem;margin:0}
+.tabla-exp{padding:0}
+
+footer{text-align:center;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cafe)}
+
+/* ===== Foto ampliada ===== */
+dialog{border:1px solid var(--cafe);padding:0;background:var(--crudo);max-width:min(92vw,1100px)}
+dialog::backdrop{background:rgba(36,29,23,.88)}
+dialog img{display:block;max-width:100%;max-height:80vh;margin:0 auto}
+dialog p{margin:0;padding:12px 18px;border-top:1px solid var(--cafe);font:italic 1rem Georgia,serif}
+
+@media (max-width:900px){.galeria{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){
+  .c8,.c4{grid-column:span 12}
+  .celda,.barra{padding:20px}
+  table,tbody,tr,th,td{display:block;width:100%}
+  th,td{padding:6px 20px}
+  th{padding-top:18px}td:last-child{padding-bottom:18px}
+  td.lugar{width:100%}
+  tr{border-top:1px solid var(--cafe)}tr:first-child{border-top:0}
+  th,td{border-top:0}
+}
+@media (max-width:520px){.galeria{grid-template-columns:1fr}}

@@ -1,172 +1,156 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>Laura Rivero Vico — Portfolio</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <style>
-            html, body {
-                background-color: #1a1714 !important;
-            }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laura Rivero Vico — Portfolio</title>
+  <meta name="description" content="Portfolio de Laura Rivero Vico, conservación y restauración del patrimonio cultural: piedra, madera y pintura.">
+  <link rel="stylesheet" href="css/retro.css">
+</head>
+<body>
+<div class="pagina">
 
-            #header {
-                background-color: #1a1714 !important;
-                border-left: 3px solid #b85c38 !important;
-            }
+  <!-- CABECERA -->
+  <div class="tabla">
+    <header class="celda c8 cafe">
+      <h1>Laura<br>Rivero Vico</h1>
+      <p class="sub">Conservación y restauración del patrimonio cultural</p>
+    </header>
+    <nav class="celda c4 arena" aria-label="Contacto y enlaces">
+      <p class="rotulo">Contacto</p>
+      <ul class="enlaces">
+        <li><a href="mailto:laurariverovico@gmail.com">laurariverovico@gmail.com</a></li>
+        <li><a href="cv/CV_Laura_Rivero_Vico_ONLINEligero.pdf" target="_blank" rel="noopener">Curriculum Vitae (PDF)</a></li>
+        <li><a href="https://www.linkedin.com/in/laura-rivero-vico-restauracionconservacion" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </nav>
+  </div>
 
-            #header h1 {
-                color: #b85c38 !important;
-            }
+  <!-- TRABAJOS -->
+  <div class="barra"><h2>Trabajos</h2></div>
+  <div class="galeria">
 
-            #header p {
-                color: #9a9088 !important;
-            }
+    <!-- Para añadir un trabajo: copia un bloque <article> entero, pégalo debajo
+         y cambia la foto (images/fulls e images/thumbs), el título y el texto. -->
 
-            #header nav a {
-                color: #b85c38 !important;
-                opacity: 1 !important;
-            }
-            #header nav a:hover {
-                color: #d4795a !important;
-            }
+    <article class="obra">
+      <a class="foto" href="images/fulls/1.jpg" data-titulo="Limpieza de material pétreo de fachada mediante arenado">
+        <img src="images/thumbs/1.jpg" alt="Laura limpiando con arenado un relieve de piedra en la fachada del Ayuntamiento, sobre andamio" loading="lazy">
+      </a>
+      <div class="texto">
+        <h3>Limpieza de material pétreo de fachada mediante arenado</h3>
+        <p>Ayuntamiento nº11 de París, Francia</p>
+      </div>
+    </article>
 
-            /* Email con estilo igual al resto de links */
-            #header .email-link {
-                color: #9a9088 !important;
-                text-decoration: none;
-                font-size: inherit;
-                transition: color 0.2s;
-            }
-            #header .email-link:hover {
-                color: #b85c38 !important;
-            }
+    <article class="obra">
+      <a class="foto" href="images/fulls/2.jpg" data-titulo="Talla de fauno">
+        <img src="images/thumbs/2.jpg" alt="Relieve de un fauno tallado en piedra, sobre una mesa de taller" loading="lazy">
+      </a>
+      <div class="texto">
+        <h3>Talla de fauno</h3>
+        <p>Talla en piedra con pantógrafo</p>
+      </div>
+    </article>
 
-            #about h2 {
-                color: #b85c38 !important;
-                opacity: 1 !important;
-            }
+    <article class="obra">
+      <a class="foto" href="images/fulls/3.jpg" data-titulo="Copia de fauno en barro">
+        <img src="images/thumbs/3.jpg" alt="Copia en barro de un fauno junto al relieve de piedra original" loading="lazy">
+      </a>
+      <div class="texto">
+        <h3>Copia de fauno en barro</h3>
+      </div>
+    </article>
 
-            #about p {
-                color: #9a9088 !important;
-                opacity: 1 !important;
-            }
+    <article class="obra">
+      <a class="foto" href="images/fulls/4.jpg" data-titulo="Capitel jónico">
+        <img src="images/thumbs/4.jpg" alt="Capitel jónico tallado en piedra sobre una mesa de trabajo" loading="lazy">
+      </a>
+      <div class="texto">
+        <h3>Capitel jónico</h3>
+        <p>Talla en piedra libre</p>
+      </div>
+    </article>
 
-            #thumbnails article h2 {
-                color: #e8e0d8 !important;
-            }
+    <article class="obra">
+      <a class="foto" href="images/fulls/5.jpg" data-titulo="Decoración varia en moldura">
+        <img src="images/thumbs/5.jpg" alt="Moldura de piedra blanca con óvalos y hojas talladas, junto a las herramientas" loading="lazy">
+      </a>
+      <div class="texto">
+        <h3>Decoración varia en moldura</h3>
+        <p>Talla en piedra libre</p>
+      </div>
+    </article>
 
-            #thumbnails article p {
-                color: #b85c38 !important;
-                opacity: 1 !important;
-            }
+    <div class="pronto">Más trabajos próximamente</div>
+  </div>
 
-            #footer {
-                background-color: #1a1714 !important;
-                color: #9a9088 !important;
-            }
-            #footer a {
-                color: #b85c38 !important;
-            }
+  <!-- SOBRE MÍ -->
+  <div class="tabla">
+    <section class="celda c8">
+      <p class="rotulo">Sobre mí</p>
+      <p>Graduada en Conservación y Restauración de Bienes Culturales y Máster en Ciencia y Tecnología del Patrimonio Arquitectónico en Granada. Mi trabajo se centra en la restauración de patrimonio arquitectónico y escultórico.</p>
+      <p>Siento gran pasión por todas las disciplinas de la restauración y las artes y tengo muchísimas ganas de aprender.</p>
+    </section>
+    <aside class="celda c4 arena">
+      <p class="rotulo">Formación</p>
+      <p><strong>Máster en Ciencia y Tecnología del Patrimonio Arquitectónico</strong><br>Universidad de Granada, 2025–2026</p>
+      <p><strong>Grado en Conservación y Restauración de Bienes Culturales</strong><br>Universidad de Granada, 2020–2025</p>
+      <p class="rotulo" style="margin-top:1.2em">Idiomas</p>
+      <p style="margin:0">Español nativo · Inglés C1 (Cambridge CAE)</p>
+    </aside>
+  </div>
 
-            hr {
-                border-color: #b85c38 !important;
-                opacity: 0.3 !important;
-            }
+  <!-- EXPERIENCIA -->
+  <div class="barra"><h2>Experiencia</h2></div>
+  <div class="tabla tabla-exp">
+    <table>
+      <tr>
+        <th scope="row">Mar – May 2026</th>
+        <td class="lugar"><h3>Catedral y Hospital Real de Granada</h3><small>Julia Ramos Restauración del Patrimonio</small></td>
+        <td><p>Torre de la Catedral: limpieza por arenado, limpieza de rejería metálica y sellado de llagas y grietas. Patio de los Mármoles: consolidación, papeta AB57 y reintegración de volúmenes.</p></td>
+      </tr>
+      <tr>
+        <th scope="row">Abr – Jun 2024</th>
+        <td class="lugar"><h3>Taller de Restauración de Madera de la Alhambra</h3><small>Patronato de la Alhambra y el Generalife</small></td>
+        <td><p>Intervención en alfarjes y armaduras, entre ellas la del Mirador de Abencerrajes: consolidación, limpieza mecánica, barnizado y adhesión de piezas sueltas.</p></td>
+      </tr>
+      <tr>
+        <th scope="row">Ene – Feb 2024</th>
+        <td class="lugar"><h3>Restauración de pintura sobre lienzo</h3><small>Universidad de Granada</small></td>
+        <td><p>Campaña de 25 h sobre obra de los siglos XVII y XX: estucado de lagunas, nivelación, limpieza, eliminación de repintes y reintegración cromática.</p></td>
+      </tr>
+      <tr>
+        <th scope="row">Jul – Sep 2022</th>
+        <td class="lugar"><h3>Restauración y escultura en piedra</h3><small>Ayuntamiento nº11 de París, Francia</small></td>
+        <td><p>Fachada principal: limpieza con arenado, reintegración matérica y pátina con agua de cal pigmentada. Formación en escultura clásica en piedra, talla libre y con pantógrafo.</p></td>
+      </tr>
+    </table>
+  </div>
 
-            #main > .nav-next:before,
-            #main > .nav-previous:before {
-                color: #b85c38 !important;
-            }
-        </style>
-    </head>
-    <body class="is-preload-0 is-preload-1 is-preload-2">
+  <footer>© Laura Rivero Vico</footer>
+</div>
 
-        <!-- Main -->
-            <div id="main">
+<!-- Visor de fotos -->
+<dialog id="visor" aria-label="Foto ampliada">
+  <img src="" alt="">
+  <p></p>
+</dialog>
 
-                <!-- Header -->
-                    <header id="header">
-                        <p style="text-align: center; opacity: 0.5; font-size: 0.85em; margin-top: 1em;">Portfolio en desarrollo</p>
-                        <hr style="border: none; border-top: 1px solid rgba(184,92,56,0.4); width: 100%;">
-                        <h1>Laura Rivero Vico</h1>
-                        <p>
-                            <a href="mailto:laurariverovico@gmail.com" class="email-link">
-                                laurariverovico@gmail.com
-                            </a>
-                        </p>
-                        <nav style="margin-top: 1em;">
-                            <ul style="list-style: none; padding: 0; display: flex; gap: 1.5em; justify-content: right; flex-wrap: wrap;">
-                                <li>
-                                    <a href="cv/CV_Laura_Rivero_Vico_ONLINEligero.pdf" target="_blank" style="text-decoration: none; font-size: 0.9em; letter-spacing: 0.05em;">
-                                        Curriculum Vitae
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/laura-rivero-vico-restauracionconservacion" target="_blank" style="text-decoration: none; font-size: 0.9em; letter-spacing: 0.05em;">
-                                        LinkedIn
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </header>
-
-                <!-- Sobre mí -->
-                    <section id="about" style="max-width: 680px; margin: 2em auto 3em auto; text-align: center; padding: 0 1.5em; line-height: 1.8;">
-                        <h2 style="font-size: 1.1em; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1em;">Sobre mí</h2>
-                        <p style="font-size: 0.85em;">
-                            Graduada en Conservación y Restauración de Bienes Culturales y Máster en Ciencia y Tecnología del Patrimonio Arquitectónico en Granada. 
-                            Mi trabajo se centra en la restauración de patrimonio arquitectónico y escultórico. 
-                            Siento gran pasión por todas las disciplinas de la restauración y las artes y tengo muchísimas 
-                            ganas de aprender.
-                        </p>
-                        <hr style="border: none; border-top: 1px solid rgba(184,92,56,0.3); width: 40%; margin: 1.5em auto;">
-                    </section>
-
-                <!-- Thumbnail -->
-                    <section id="thumbnails">
-                        <article>
-                            <a class="thumbnail" href="images/fulls/1.jpeg"><img src="images/thumbs/1.jpg" alt="" /></a>
-                            <h2>Limpieza de material pétreo de fachada mediante arenado</h2>
-                            <p>Ayuntamiento nº11 de París, Francia</p>
-                        </article>
-                        <article>
-                            <a class="thumbnail" href="images/fulls/2.jpg"><img src="images/thumbs/2.jpg" alt="" /></a>
-                            <h2>Talla de fauno</h2>
-                            <p>Talla en piedra con pantógrafo</p>
-                        </article>
-                        <article>
-                            <a class="thumbnail" href="images/fulls/3.jpg"><img src="images/thumbs/3.jpg" alt="" /></a>
-                            <h2>Copia de fauno en barro</h2>
-                            <p>-</p>
-                        </article>
-                        <article>
-                            <a class="thumbnail" href="images/fulls/4.jpg"><img src="images/thumbs/4.jpg" alt="" /></a>
-                            <h2>Capitel jónico</h2>
-                            <p>Talla en piedra libre</p>
-                        </article>
-                        <article>
-                            <a class="thumbnail" href="images/fulls/5.jpg"><img src="images/thumbs/5.jpg" alt="" /></a>
-                            <h2>Decoración varia en moldura</h2>
-                            <p>Talla en piedra libre</p>
-                        </article>                  
-                    </section>
-
-                <!-- Footer -->
-                    <footer id="footer">
-                        <ul class="copyright">
-                            <li>&copy; Laura Rivero Vico.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a>.</li>
-                        </ul>
-                    </footer>
-
-            </div>
-
-        <!-- Scripts -->
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/main.js"></script>
-
-    </body>
+<script>
+  const visor = document.getElementById('visor');
+  const img = visor.querySelector('img');
+  const pie = visor.querySelector('p');
+  document.querySelectorAll('.obra a.foto').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      img.src = a.href;
+      img.alt = a.querySelector('img').alt;
+      pie.textContent = a.dataset.titulo;
+      visor.showModal();
+    });
+  });
+  visor.addEventListener('click', () => visor.close());
+</script>
+</body>
 </html>
