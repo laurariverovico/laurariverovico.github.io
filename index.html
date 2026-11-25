@@ -47,12 +47,22 @@
   <div class="galeria">
 
     <!-- Para añadir un trabajo: copia un bloque <article> entero, pégalo debajo
-         y cambia la foto (images/fulls e images/thumbs), el título y el texto. -->
+         y cambia la foto (images/fulls e images/thumbs), el título y el texto.
+         Para añadir otra foto a un trabajo: dentro de su <div class="pista">, copia un
+         bloque <a class="foto"> entero, pégalo debajo y cambia las rutas de la foto.
+         Las flechas aparecen solas cuando un trabajo tiene más de una foto. -->
 
     <article class="obra">
-      <a class="foto" href="images/fulls/1.jpg" data-titulo="Limpieza de material pétreo de fachada mediante arenado">
-        <img src="images/thumbs/1.jpg" alt="Laura limpiando con arenado un relieve de piedra en la fachada del Ayuntamiento, sobre andamio" loading="lazy">
-      </a>
+      <div class="carrusel">
+        <div class="pista">
+          <a class="foto" href="images/fulls/1.jpg" data-titulo="Limpieza de material pétreo de fachada mediante arenado">
+            <img src="images/thumbs/1.jpg" alt="Laura limpiando con arenado un relieve de piedra en la fachada del Ayuntamiento, sobre andamio" loading="lazy">
+          </a>
+          <a class="foto" href="images/fulls/1b.jpg" data-titulo="Limpieza de material pétreo de fachada mediante arenado">
+            <img src="images/thumbs/1b.jpg" style="--pos:10% 40%" alt="Laura trabajando con arenado en la fachada del Ayuntamiento, junto a un relieve con el escudo de París" loading="lazy">
+          </a>
+        </div>
+      </div>
       <div class="texto">
         <h3>Limpieza de material pétreo de fachada mediante arenado</h3>
         <p>Ayuntamiento nº11 de París, Francia</p>
@@ -60,9 +70,13 @@
     </article>
 
     <article class="obra">
-      <a class="foto" href="images/fulls/2.jpg" data-titulo="Talla de fauno">
-        <img src="images/thumbs/2.jpg" alt="Relieve de un fauno tallado en piedra, sobre una mesa de taller" loading="lazy">
-      </a>
+      <div class="carrusel">
+        <div class="pista">
+          <a class="foto" href="images/fulls/2.jpg" data-titulo="Talla de fauno">
+            <img src="images/thumbs/2.jpg" alt="Relieve de un fauno tallado en piedra, sobre una mesa de taller" loading="lazy">
+          </a>
+        </div>
+      </div>
       <div class="texto">
         <h3>Talla de fauno</h3>
         <p>Talla en piedra con pantógrafo</p>
@@ -70,18 +84,26 @@
     </article>
 
     <article class="obra">
-      <a class="foto" href="images/fulls/3.jpg" data-titulo="Copia de fauno en barro">
-        <img src="images/thumbs/3.jpg" alt="Copia en barro de un fauno junto al relieve de piedra original" loading="lazy">
-      </a>
+      <div class="carrusel">
+        <div class="pista">
+          <a class="foto" href="images/fulls/3.jpg" data-titulo="Copia de fauno en barro">
+            <img src="images/thumbs/3.jpg" alt="Copia en barro de un fauno junto al relieve de piedra original" loading="lazy">
+          </a>
+        </div>
+      </div>
       <div class="texto">
         <h3>Copia de fauno en barro</h3>
       </div>
     </article>
 
     <article class="obra">
-      <a class="foto" href="images/fulls/4.jpg" data-titulo="Capitel jónico">
-        <img src="images/thumbs/4.jpg" alt="Capitel jónico tallado en piedra sobre una mesa de trabajo" loading="lazy">
-      </a>
+      <div class="carrusel">
+        <div class="pista">
+          <a class="foto" href="images/fulls/4.jpg" data-titulo="Capitel jónico">
+            <img src="images/thumbs/4.jpg" alt="Capitel jónico tallado en piedra sobre una mesa de trabajo" loading="lazy">
+          </a>
+        </div>
+      </div>
       <div class="texto">
         <h3>Capitel jónico</h3>
         <p>Talla en piedra libre</p>
@@ -89,9 +111,13 @@
     </article>
 
     <article class="obra">
-      <a class="foto" href="images/fulls/5.jpg" data-titulo="Decoración varia en moldura">
-        <img src="images/thumbs/5.jpg" alt="Moldura de piedra blanca con óvalos y hojas talladas, junto a las herramientas" loading="lazy">
-      </a>
+      <div class="carrusel">
+        <div class="pista">
+          <a class="foto" href="images/fulls/5.jpg" data-titulo="Decoración varia en moldura">
+            <img src="images/thumbs/5.jpg" alt="Moldura de piedra blanca con óvalos y hojas talladas, junto a las herramientas" loading="lazy">
+          </a>
+        </div>
+      </div>
       <div class="texto">
         <h3>Decoración varia en moldura</h3>
         <p>Talla en piedra libre</p>
@@ -160,6 +186,33 @@
 </dialog>
 
 <script>
+  /* Carruseles: las flechas se crean solas en los trabajos con más de una foto */
+  document.querySelectorAll('.carrusel').forEach(c => {
+    const pista = c.querySelector('.pista');
+    const total = pista.children.length;
+    if (total < 2) return;
+    c.setAttribute('role', 'group');
+    c.setAttribute('aria-roledescription', 'carrusel');
+    c.setAttribute('aria-label', 'Fotos de: ' + c.closest('.obra').querySelector('h3').textContent);
+    const reducir = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const icono = d => '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d + '"/></svg>';
+    function ir(paso) {
+      const actual = Math.round(pista.scrollLeft / pista.clientWidth);
+      const destino = (actual + paso + total) % total;
+      pista.scrollTo({ left: destino * pista.clientWidth, behavior: reducir.matches ? 'auto' : 'smooth' });
+    }
+    [['ant', 'Foto anterior', 'M15 5l-7 7 7 7', -1], ['sig', 'Foto siguiente', 'M9 5l7 7-7 7', 1]].forEach(([clase, texto, trazo, paso]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'flecha ' + clase;
+      b.setAttribute('aria-label', texto);
+      b.innerHTML = icono(trazo);
+      b.addEventListener('click', () => ir(paso));
+      c.appendChild(b);
+    });
+  });
+
+  /* Visor de fotos ampliadas */
   const visor = document.getElementById('visor');
   const img = visor.querySelector('img');
   const pie = visor.querySelector('p');

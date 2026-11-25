@@ -54,6 +54,16 @@ p{margin:0 0 .8em}
 .obra a.foto{display:block;line-height:0;overflow:hidden;background:var(--cafe)}
 .obra img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:var(--pos,center 35%);transition:transform .5s,opacity .3s}
 .obra a.foto:hover img{transform:scale(1.03);opacity:.9}
+/* ===== Carrusel de fotos de cada trabajo ===== */
+.carrusel{position:relative}
+.pista{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pista::-webkit-scrollbar{display:none}
+.pista a.foto{flex:0 0 100%;scroll-snap-align:start}
+.flecha{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;padding:0;display:grid;place-items:center;border:1px solid var(--cafe);background:rgba(245,240,232,.92);color:var(--cafe);cursor:pointer;transition:background .2s,color .2s}
+.flecha.ant{left:10px}
+.flecha.sig{right:10px}
+.flecha:hover{background:var(--cafe);color:var(--crudo)}
+.flecha:focus-visible{outline:2px solid var(--cobre);outline-offset:2px}
 .obra .texto{padding:16px 20px 20px;border-top:1px solid var(--cafe);flex:1}
 .obra .texto p{margin:0;font-size:.9rem;color:#5a4a3c}
 .pronto{display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;background:var(--arena);font:italic 1.1rem Georgia,serif;min-height:220px}
