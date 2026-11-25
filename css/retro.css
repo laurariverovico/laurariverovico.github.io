@@ -40,6 +40,12 @@ p{margin:0 0 .8em}
 .enlaces a{display:block;padding:10px 0;text-decoration:none;font-weight:600;overflow-wrap:anywhere}
 .enlaces a:hover{color:var(--cobre);padding-left:6px;transition:padding .2s}
 
+/* ===== Contacto: en ordenador siempre abierto; en móvil, botón plegable ===== */
+.contacto summary{display:none;list-style:none;cursor:pointer;align-items:center;gap:8px;font-weight:600}
+.contacto summary::-webkit-details-marker{display:none}
+.contacto summary span{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.contacto summary:focus-visible{outline:2px solid var(--cobre);outline-offset:4px}
+
 .barra{background:var(--cafe);color:var(--crudo);padding:10px 26px}
 
 /* ===== Trabajos ===== */
@@ -83,6 +89,10 @@ dialog p{margin:0;padding:12px 18px;border-top:1px solid var(--cafe);font:italic
 
 @media (max-width:900px){.galeria{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){
+  .celda.contacto{padding:14px 20px}
+  .contacto summary{display:inline-flex}
+  .contacto .rotulo{display:none}
+  .contacto .enlaces{margin-top:8px}
   .c8,.c4{grid-column:span 12}
   .celda,.barra{padding:20px}
   table,tbody,tr,th,td{display:block;width:100%}

@@ -16,13 +16,29 @@
       <h1>Laura<br>Rivero Vico</h1>
       <p class="sub">Conservación y restauración del patrimonio cultural</p>
     </header>
-    <nav class="celda c4 arena" aria-label="Contacto y enlaces">
-      <p class="rotulo">Contacto</p>
-      <ul class="enlaces">
-        <li><a href="mailto:laurariverovico@gmail.com">laurariverovico@gmail.com</a></li>
-        <li><a href="cv/CV_Laura_Rivero_Vico_ONLINEligero.pdf" target="_blank" rel="noopener">Curriculum Vitae (PDF)</a></li>
-        <li><a href="https://www.linkedin.com/in/laura-rivero-vico-restauracionconservacion" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
+    <nav class="celda c4 arena contacto" aria-label="Contacto y enlaces">
+      <details id="contacto" open>
+        <summary>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          <span>Contacto</span>
+        </summary>
+        <p class="rotulo">Contacto</p>
+        <ul class="enlaces">
+          <li><a href="mailto:laurariverovico@gmail.com">laurariverovico@gmail.com</a></li>
+          <li><a href="cv/CV_Laura_Rivero_Vico_ONLINEligero.pdf" target="_blank" rel="noopener">Curriculum Vitae (PDF)</a></li>
+          <li><a href="https://www.linkedin.com/in/laura-rivero-vico-restauracionconservacion" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </details>
+      <script>
+        /* En móvil, Contacto empieza plegado; en ordenador siempre se ve abierto */
+        (function () {
+          var d = document.getElementById('contacto');
+          var mq = window.matchMedia('(max-width:760px)');
+          function ajustar() { d.open = !mq.matches; }
+          ajustar();
+          mq.addEventListener('change', ajustar);
+        })();
+      </script>
     </nav>
   </div>
 
