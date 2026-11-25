@@ -50,7 +50,8 @@
          y cambia la foto (images/fulls e images/thumbs), el título y el texto.
          Para añadir otra foto a un trabajo: dentro de su <div class="pista">, copia un
          bloque <a class="foto"> entero, pégalo debajo y cambia las rutas de la foto.
-         Las flechas aparecen solas cuando un trabajo tiene más de una foto. -->
+         Las flechas aparecen solas cuando un trabajo tiene más de una foto.
+         Si una foto lleva data-fase="...", ese texto sustituye al subtítulo de la casilla mientras se ve esa foto. -->
 
     <article class="obra">
       <div class="carrusel">
@@ -72,27 +73,44 @@
     <article class="obra">
       <div class="carrusel">
         <div class="pista">
-          <a class="foto" href="images/fulls/2.jpg" data-titulo="Talla de fauno">
+          <a class="foto" data-fase="Talla en piedra con pantógrafo" href="images/fulls/2.jpg" data-titulo="Talla de fauno">
             <img src="images/thumbs/2.jpg" alt="Relieve de un fauno tallado en piedra, sobre una mesa de taller" loading="lazy">
           </a>
-        </div>
-      </div>
-      <div class="texto">
-        <h3>Talla de fauno</h3>
-        <p>Talla en piedra con pantógrafo</p>
-      </div>
-    </article>
-
-    <article class="obra">
-      <div class="carrusel">
-        <div class="pista">
-          <a class="foto" href="images/fulls/3.jpg" data-titulo="Copia de fauno en barro">
-            <img src="images/thumbs/3.jpg" alt="Copia en barro de un fauno junto al relieve de piedra original" loading="lazy">
+          <a class="foto" data-fase="Talla en piedra con pantógrafo" href="images/fulls/2b.jpg" data-titulo="Talla de fauno: fase avanzada">
+            <img src="images/thumbs/2b.jpg" alt="Relieve de fauno en piedra casi terminado, con cuernos, orejas y barba, sobre el banco de trabajo" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Talla en piedra con pantógrafo" href="images/fulls/2c.jpg" data-titulo="Talla de fauno: rostro en proceso">
+            <img src="images/thumbs/2c.jpg" alt="Rostro del fauno emergiendo del bloque de piedra, con las marcas de las herramientas" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Talla en piedra con pantógrafo" href="images/fulls/2d.jpg" data-titulo="Talla de fauno: desbaste">
+            <img src="images/thumbs/2d.jpg" alt="Bloque de piedra desbastado con el rostro del fauno apenas esbozado" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Talla en piedra con pantógrafo" href="images/fulls/2e.jpg" data-titulo="Talla de fauno: bloque de piedra de partida">
+            <img src="images/thumbs/2e.jpg" alt="Bloque de piedra sin tallar sobre el banco del taller, junto a un taladro" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Molde y copia en escayola" href="images/fulls/2f.jpg" data-titulo="Fauno: copia en escayola">
+            <img src="images/thumbs/2f.jpg" alt="Copia en escayola del fauno con restos de arcilla roja, sobre un tablero" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Molde y copia en escayola" href="images/fulls/2g.jpg" data-titulo="Fauno: retirando el molde de escayola">
+            <img src="images/thumbs/2g.jpg" alt="Molde de escayola azul y blanco roto a golpes, con la copia del fauno asomando" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Molde y copia en escayola" href="images/fulls/2h.jpg" data-titulo="Fauno: molde de escayola con arcilla">
+            <img src="images/thumbs/2h.jpg" alt="Molde de escayola azul y blanco relleno de arcilla roja, con un taco de madera en el centro" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Modelo en barro" href="images/fulls/2i.jpg" data-titulo="Fauno: modelo en barro, de perfil">
+            <img src="images/thumbs/2i.jpg" alt="Modelo en barro del fauno visto de perfil, con otra cabeza de fauno al fondo del taller" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Modelo en barro" href="images/fulls/2j.jpg" data-titulo="Fauno: modelo en barro con los ojos formados">
+            <img src="images/thumbs/2j.jpg" style="--pos:50% 50%" alt="Modelo en barro del fauno con los ojos ya formados, sobre un tablero" loading="lazy">
+          </a>
+          <a class="foto" data-fase="Modelo en barro" href="images/fulls/2k.jpg" data-titulo="Fauno: modelo en barro sin ojos">
+            <img src="images/thumbs/2k.jpg" alt="Modelo en barro del fauno todavía sin ojos, con cuernos, orejas y barba, sobre un tablero" loading="lazy">
           </a>
         </div>
       </div>
       <div class="texto">
-        <h3>Copia de fauno en barro</h3>
+        <h3>Fauno: del barro a la piedra</h3>
+        <p>Talla en piedra con pantógrafo</p>
       </div>
     </article>
 
@@ -210,6 +228,21 @@
       b.addEventListener('click', () => ir(paso));
       c.appendChild(b);
     });
+
+    /* Si las fotos llevan data-fase, el rótulo de la casilla cambia con cada una */
+    const rotulo = c.closest('.obra').querySelector('.texto p');
+    const fotos = Array.from(pista.children);
+    if (rotulo && fotos.some(f => f.dataset.fase)) {
+      rotulo.setAttribute('aria-live', 'polite');
+      let ultima = -1;
+      pista.addEventListener('scroll', () => requestAnimationFrame(() => {
+        const i = Math.round(pista.scrollLeft / pista.clientWidth);
+        if (i !== ultima && fotos[i]) {
+          ultima = i;
+          if (fotos[i].dataset.fase) rotulo.textContent = fotos[i].dataset.fase;
+        }
+      }), { passive: true });
+    }
   });
 
   /* Visor de fotos ampliadas */
