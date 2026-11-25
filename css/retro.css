@@ -62,11 +62,11 @@ p{margin:0 0 .8em}
 table{width:100%;border-collapse:collapse;background:var(--crudo)}
 th,td{padding:18px 26px;text-align:left;vertical-align:top;border-top:1px solid var(--cafe);font-weight:normal}
 tr:first-child th,tr:first-child td{border-top:0}
-th{width:150px;font:600 .85rem Arial,sans-serif;color:var(--cobre);letter-spacing:.04em}
+th{width:180px;font:600 .85rem Arial,sans-serif;color:var(--cobre);letter-spacing:.04em}
 td.lugar{width:34%}
 td.lugar small{display:block;color:#5a4a3c;font-size:.88rem;margin-top:2px}
 td p{font-size:.92rem;margin:0}
-.tabla-exp{padding:0}
+.tabla-exp{display:block;padding:0}
 
 /* ===== Formación e idiomas ===== */
 .formacion .anio{margin:0 0 14px;font:bold clamp(1.7rem,3.2vw,2.3rem)/1.1 Georgia,"Times New Roman",serif;color:var(--cobre)}
