@@ -95,7 +95,14 @@ footer{text-align:center;font-size:.8rem;letter-spacing:.14em;text-transform:upp
 dialog{border:1px solid var(--cafe);padding:0;background:var(--crudo);max-width:min(92vw,1100px)}
 dialog::backdrop{background:rgba(36,29,23,.88)}
 dialog img{display:block;max-width:100%;max-height:80vh;margin:0 auto}
-dialog p{margin:0;padding:12px 18px;border-top:1px solid var(--cafe);font:italic 1rem Georgia,serif}
+dialog p{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0;padding:12px 18px;border-top:1px solid var(--cafe);font:italic 1rem Georgia,serif}
+dialog .cuenta{font:600 .8rem Arial,sans-serif;letter-spacing:.1em;font-style:normal;color:var(--cobre);white-space:nowrap}
+.marco{position:relative;width:fit-content;max-width:100%;margin:0 auto;line-height:0}
+.marco .flecha{width:44px;height:44px}
+.marco .flecha[hidden]{display:none}
+.marco .flecha.ant{left:12px}
+.marco .flecha.sig{right:12px}
+.marco .flecha.cerrar{top:12px;right:12px;left:auto;transform:none}
 
 @media (max-width:900px){.galeria{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){

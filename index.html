@@ -286,8 +286,13 @@
 
 <!-- Visor de fotos -->
 <dialog id="visor" aria-label="Foto ampliada">
-  <img src="" alt="">
-  <p></p>
+  <div class="marco">
+    <img src="" alt="">
+    <button type="button" class="flecha ant" aria-label="Foto anterior"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="flecha sig" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button type="button" class="flecha cerrar" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <p><span class="titulo"></span><span class="cuenta"></span></p>
 </dialog>
 
 <script>
@@ -332,20 +337,64 @@
     }
   });
 
-  /* Visor de fotos ampliadas */
+  /* Visor de fotos ampliadas, con flechas para pasar de foto a foto dentro del mismo trabajo */
   const visor = document.getElementById('visor');
   const img = visor.querySelector('img');
-  const pie = visor.querySelector('p');
+  const titulo = visor.querySelector('.titulo');
+  const cuenta = visor.querySelector('.cuenta');
+  const btnAnt = visor.querySelector('.ant');
+  const btnSig = visor.querySelector('.sig');
+  const btnCerrar = visor.querySelector('.cerrar');
+  let grupo = [];
+  let indice = 0;
+
+  function mostrar(i) {
+    indice = (i + grupo.length) % grupo.length;
+    const a = grupo[indice];
+    img.src = a.href;
+    img.alt = a.querySelector('img').alt;
+    titulo.textContent = a.dataset.titulo;
+    cuenta.textContent = grupo.length > 1 ? (indice + 1) + ' / ' + grupo.length : '';
+    btnAnt.hidden = btnSig.hidden = grupo.length < 2;
+  }
+
   document.querySelectorAll('.obra a.foto').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      img.src = a.href;
-      img.alt = a.querySelector('img').alt;
-      pie.textContent = a.dataset.titulo;
+      grupo = Array.from(a.parentElement.children);
+      mostrar(grupo.indexOf(a));
       visor.showModal();
     });
   });
-  visor.addEventListener('click', () => visor.close());
+
+  btnAnt.addEventListener('click', () => mostrar(indice - 1));
+  btnSig.addEventListener('click', () => mostrar(indice + 1));
+  btnCerrar.addEventListener('click', () => visor.close());
+
+  /* Clic fuera de la foto cierra el visor */
+  visor.addEventListener('click', e => { if (e.target === visor) visor.close(); });
+
+  /* Teclado: flechas izquierda y derecha (Esc ya cierra solo) */
+  visor.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); mostrar(indice - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); mostrar(indice + 1); }
+  });
+
+  /* Móvil: deslizar el dedo sobre la foto */
+  let inicioX = null;
+  img.addEventListener('touchstart', e => { inicioX = e.touches[0].clientX; }, { passive: true });
+  img.addEventListener('touchend', e => {
+    if (inicioX === null) return;
+    const dx = e.changedTouches[0].clientX - inicioX;
+    inicioX = null;
+    if (Math.abs(dx) > 50 && grupo.length > 1) mostrar(indice + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  /* Al cerrar, el carrusel de la casilla se queda en la última foto vista */
+  visor.addEventListener('close', () => {
+    const pista = grupo[indice] && grupo[indice].parentElement;
+    if (pista) pista.scrollTo({ left: indice * pista.clientWidth, behavior: 'auto' });
+  });
 </script>
 </body>
 </html>
