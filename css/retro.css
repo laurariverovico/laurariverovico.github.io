@@ -91,6 +91,17 @@ td p{font-size:.92rem;margin:0}
 
 footer{text-align:center;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cafe)}
 
+/* ===== Menú superior (aparece al bajar) ===== */
+.menu{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--cafe);color:var(--crudo);border-bottom:1px solid var(--arena);transform:translateY(-100%);visibility:hidden;transition:transform .3s ease,visibility 0s .3s}
+.menu.visible{transform:none;visibility:visible;transition:transform .3s ease}
+.menu-in{max-width:1120px;margin:0 auto;padding:10px 44px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.menu-nombre{font:bold 1rem Georgia,"Times New Roman",serif;text-transform:uppercase;letter-spacing:.08em;text-decoration:none}
+.menu-contacto{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none}
+.menu-contacto span{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.menu-contacto:hover span{color:var(--arena)}
+.menu a:focus-visible{outline:2px solid var(--arena);outline-offset:4px}
+@media (prefers-reduced-motion:reduce){.menu,.menu.visible{transition:none}}
+
 /* ===== Foto ampliada ===== */
 dialog{border:1px solid var(--cafe);padding:0;background:var(--crudo);max-width:min(92vw,1100px)}
 dialog::backdrop{background:rgba(36,29,23,.88)}
@@ -112,6 +123,8 @@ dialog .cuenta{font:600 .8rem Arial,sans-serif;letter-spacing:.1em;font-style:no
   .contacto .enlaces{margin-top:8px}
   .c8,.c4{grid-column:span 12}
   .celda,.barra{padding:20px}
+  .menu-in{padding:10px 20px}
+  .menu-nombre{font-size:.85rem;letter-spacing:.05em}
   table,tbody,tr,th,td{display:block;width:100%}
   th,td{padding:6px 20px}
   th{padding-top:18px}td:last-child{padding-bottom:18px}

@@ -8,6 +8,17 @@
   <link rel="stylesheet" href="css/retro.css">
 </head>
 <body>
+<!-- MENÚ SUPERIOR: aparece al bajar por la página -->
+<div class="menu" id="menu">
+  <div class="menu-in">
+    <a class="menu-nombre" href="#" id="menu-inicio">Laura Rivero Vico</a>
+    <a class="menu-contacto" href="#contacto" id="menu-contacto">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      <span>Contacto</span>
+    </a>
+  </div>
+</div>
+
 <div class="pagina">
 
   <!-- CABECERA -->
@@ -395,6 +406,32 @@
     const pista = grupo[indice] && grupo[indice].parentElement;
     if (pista) pista.scrollTo({ left: indice * pista.clientWidth, behavior: 'auto' });
   });
+</script>
+<script>
+  /* Menú superior: aparece cuando la cabecera sale de la pantalla */
+  (function () {
+    var menu = document.getElementById('menu');
+    var cabecera = document.querySelector('.tabla');
+    var suave = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    new IntersectionObserver(function (entradas) {
+      var e = entradas[0];
+      menu.classList.toggle('visible', !e.isIntersecting && e.boundingClientRect.top < 0);
+    }).observe(cabecera);
+
+    /* El nombre lleva arriba del todo */
+    document.getElementById('menu-inicio').addEventListener('click', function (ev) {
+      ev.preventDefault();
+      window.scrollTo({ top: 0, behavior: suave });
+    });
+
+    /* El botón Contacto sube a la casilla de contacto y, en móvil, la despliega */
+    document.getElementById('menu-contacto').addEventListener('click', function (ev) {
+      ev.preventDefault();
+      var d = document.getElementById('contacto');
+      d.open = true;
+      d.closest('nav').scrollIntoView({ behavior: suave, block: 'start' });
+    });
+  })();
 </script>
 </body>
 </html>
