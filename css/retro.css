@@ -49,8 +49,8 @@ p{margin:0 0 .8em}
 .barra{background:var(--cafe);color:var(--crudo);padding:10px 26px}
 
 /* ===== Trabajos ===== */
-.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:28px;counter-reset:obra}
-.obra{background:var(--crudo);display:flex;flex-direction:column;border:1px solid var(--cafe);box-shadow:5px 5px 0 var(--arena);counter-increment:obra}
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:28px}
+.obra{background:var(--crudo);display:flex;flex-direction:column;border:1px solid var(--cafe);box-shadow:5px 5px 0 var(--arena)}
 .obra a.foto{display:block;line-height:0;overflow:hidden;background:var(--cafe)}
 .obra img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:var(--pos,center 35%);transition:transform .5s,opacity .3s}
 .obra a.foto:hover img{transform:scale(1.03);opacity:.9}
@@ -65,7 +65,6 @@ p{margin:0 0 .8em}
 .flecha:hover{background:var(--cafe);color:var(--crudo)}
 .flecha:focus-visible{outline:2px solid var(--cobre);outline-offset:2px}
 .obra .texto{padding:16px 20px 20px;border-top:3px solid var(--cobre);flex:1}
-.obra .texto::before{content:"Trabajo " counter(obra,decimal-leading-zero);display:block;margin-bottom:6px;font:600 .72rem Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre)}
 .obra .texto p{margin:0;font-size:.9rem;color:#5a4a3c}
 .pronto{display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;background:var(--arena);border:1px solid var(--cafe);font:italic 1.1rem Georgia,serif;min-height:220px}
 
